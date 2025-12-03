@@ -59,7 +59,7 @@ https://github.com/Jaykwok2999/RunFilesBuilder/releases
 | 启动       | 包名称                                              |
 | ---------- | --------------------------------------------------- |
 | X86-64     | istoreos-x86-64-generic-squashfs-combined.img.gz    |
-| X86-64-EFI | storeos-x86-64-generic-squashfs-combined-efi.img.gz |
+| X86-64-EFI | istoreos-x86-64-generic-squashfs-combined-efi.img.gz |
 
 ## 鸣谢
 
