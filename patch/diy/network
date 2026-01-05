@@ -1,0 +1,43 @@
+
+config interface 'loopback'
+	option device 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config globals 'globals'
+	option packet_steering '1'
+
+config interface 'wan'
+	option proto 'pppoe'
+	option device 'eth6'
+	option username '13527202999@139.gd'
+	option password '112233'
+	option ipv6 'auto'
+	option metric '10'
+
+config device
+	option name 'br-lan'
+	option type 'bridge'
+	list ports 'eth0'
+	list ports 'eth1'
+	list ports 'eth2'
+	list ports 'eth3'
+	list ports 'eth4'
+	list ports 'eth5'
+
+config interface 'lan'
+	option device 'br-lan'
+	option proto 'static'
+	option ipaddr '192.168.2.1'
+	option netmask '255.255.255.0'
+	option ip6assign '60'
+
+config interface 'wanb'
+	option proto 'pppoe'
+	option device 'eth6'
+	option username '13527202999@139.gd'
+	option password '112233'
+	option ipv6 'auto'
+	option metric '20'
+
