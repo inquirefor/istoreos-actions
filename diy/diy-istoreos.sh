@@ -93,7 +93,7 @@ rm -rf feeds/istoreos_ipk/patch/istoreos-files
 rm -rf feeds/istoreos_ipk/vlmcsd
 rm -rf feeds/istoreos_ipk/patch/wall-luci/luci-app-vlmcsd
 rm -rf package/diy/luci-app-ota
-# rm #rm #rm -rf feeds/istoreos_ipk/t
+rm -rf feeds/istoreos_ipk/tailscale
 
 # istoreos-theme
 rm -rf feeds/luci/themes/luci-theme-argon
@@ -184,7 +184,7 @@ sed -i 's,frp 客户端,frpc 客户端,g' feeds/luci/applications/luci-app-frpc/
 
 # tailscale
 #rm -rf feeds/packages/net/tailscale
-sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
+#sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 
 # 必要的补丁
 #pushd feeds/luci
