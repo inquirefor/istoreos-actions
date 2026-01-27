@@ -96,7 +96,7 @@ jobs:
         sed -i "4isrc-git istoreos_ipk https://github.com/Jaykwok2999/istoreos-ipk.git;main\n" feeds.conf.default        
         sed -i "5isrc-git theme https://github.com/Jaykwok2999/istoreos-theme.git;main\n" feeds.conf.default        
         sed -i "6isrc-git passwall https://github.com/Jaykwok2999/luci-app-passwall.git;main\n" feeds.conf.default        
-        sed -i "7isrc-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main\n" feeds.conf.default        
+        sed -i "7isrc-git passwall_packages https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git;main\n" feeds.conf.default        
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
