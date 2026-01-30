@@ -3,7 +3,7 @@ mkdir -p files/etc/config
 wget -qO- https://raw.githubusercontent.com/Jaykwok2999/istoreos-ipk/refs/heads/main/patch/diy/openclash > files/etc/config/openclash
 wget -qO- https://raw.githubusercontent.com/Jaykwok2999/istoreos-ipk/refs/heads/main/patch/diy/proxy/openclash > files/etc/config/openclash
 wget -qO- https://raw.githubusercontent.com/Jaykwok2999/istoreos-ipk/refs/heads/main/patch/diy/mosdns > files/etc/config/mosdns
-# wget -qO- https://raw.githubusercontent.com/Jaykwok2999/istoreos-ipk/refs/heads/main/patch/diy/smartdns > files/etc/config/smartdns
+wget -qO- https://raw.githubusercontent.com/Jaykwok2999/istoreos-ipk/refs/heads/main/patch/diy/smartdns > files/etc/config/smartdns
 
 mkdir -p files/etc
 wget -qO- https://raw.githubusercontent.com/Jaykwok2999/istoreos-actions/refs/heads/main/etc/opkg.conf > files/etc/opkg.conf
@@ -145,14 +145,13 @@ git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-upnp
 git_sparse_clone main https://github.com/kiddin9/kwrt-packages miniupnpd
 git_sparse_clone dev https://github.com/vernesong/OpenClash luci-app-openclash
 #git clone https://github.com/Jaykwok2999/passwall-packages.git package/passwall_packages
-#git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall_packages
 # git clone https://github.com/pymumu/luci-app-smartdns.git luci-app-smartdns
 # git clone https://github.com/pymumu/openwrt-smartdns.git smartdns
 
 
 # SSRP & Passwall
-# git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-passwall
-# cp -af feeds/istoreos_ipk/patch/un.svg package/luci-app-passwall/root/www/luci-static/passwall/flags/
+git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-passwall
+cp -af feeds/istoreos_ipk/patch/un.svg package/luci-app-passwall/root/www/luci-static/passwall/flags/
 
 # samba4
 #rm -rf feeds/packages/libs/liburing
