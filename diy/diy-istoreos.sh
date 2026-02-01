@@ -91,6 +91,8 @@ rm -rf feeds/istoreos_ipk/vlmcsd
 rm -rf feeds/istoreos_ipk/patch/wall-luci/luci-app-vlmcsd
 rm -rf package/diy/luci-app-ota
 rm -rf feeds/istoreos_ipk/tailscale
+rm -rf feeds/luci/applications/luci-app-dockerman
+rm -rf feeds/luci/applications/luci-app-docker
 
 # istoreos-theme
 rm -rf feeds/luci/themes/luci-theme-argon
@@ -98,7 +100,8 @@ rm -rf feeds/luci/applications/luci-app-argon-config
 rm -rf feeds/third/luci-theme-argon
 rm -rf feeds/third/luci-app-argon-config
 rm -rf feeds/istoreos_ipk/theme/luci-theme-argon
-rm -rf feeds/luci/applications/luci-app-dockerman
+
+
 echo -e "\nmsgid \"VPN\"" >> feeds/luci/modules/luci-base/po/zh_Hans/base.po
 echo -e "msgstr \"魔法网络\"" >> feeds/luci/modules/luci-base/po/zh_Hans/base.po
 
@@ -141,6 +144,7 @@ git_sparse_clone main https://github.com/Jaykwok2999/istoreos-theme luci-app-arg
 git_sparse_clone main https://github.com/Jaykwok2999/istoreos-ota luci-app-ota
 git_sparse_clone main https://github.com/zijieKwok/github-ota fw_download_tool
 git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-dockerman
+git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-docker
 git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-upnp
 git_sparse_clone main https://github.com/kiddin9/kwrt-packages miniupnpd
 git_sparse_clone dev https://github.com/vernesong/OpenClash luci-app-openclash
