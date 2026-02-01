@@ -1,7 +1,7 @@
 #!/bin/bash
 mkdir -p files/etc/config
 wget -qO- https://raw.githubusercontent.com/Jaykwok2999/istoreos-ipk/refs/heads/main/patch/diy/openclash > files/etc/config/openclash
-#wget -qO- https://raw.githubusercontent.com/Jaykwok2999/istoreos-ipk/refs/heads/main/patch/diy/proxy/openclash > files/etc/config/openclash
+wget -qO- https://raw.githubusercontent.com/Jaykwok2999/istoreos-ipk/refs/heads/main/patch/diy/proxy/openclash > files/etc/config/openclash
 wget -qO- https://raw.githubusercontent.com/Jaykwok2999/istoreos-ipk/refs/heads/main/patch/diy/mosdns > files/etc/config/mosdns
 wget -qO- https://raw.githubusercontent.com/Jaykwok2999/istoreos-ipk/refs/heads/main/patch/diy/smartdns > files/etc/config/smartdns
 
@@ -11,8 +11,8 @@ mkdir -p files/etc/opkg
 wget -qO- https://raw.githubusercontent.com/Jaykwok2999/istoreos-actions/refs/heads/main/etc/distfeeds.conf > files/etc/opkg/distfeeds.conf-86
 wget -qO- https://raw.githubusercontent.com/Jaykwok2999/istoreos-actions/refs/heads/main/etc/distfeeds.conf > files/etc/opkg/distfeeds.conf
 
-mkdir -p files/root
-wget -qO- https://raw.githubusercontent.com/Jaykwok2999/istoreos-actions/refs/heads/main/etc/.profile > files/root/.profile
+# mkdir -p files/root
+# wget -qO- https://raw.githubusercontent.com/Jaykwok2999/istoreos-actions/refs/heads/main/etc/.profile > files/root/.profile
 
 # 更改时间戳
 rm -rf scripts/get_source_date_epoch.sh
@@ -22,7 +22,7 @@ chmod +x scripts/get_source_date_epoch.sh
 
 # 更改 banner
 rm -rf package/base-files/files/etc/banner
-cp -af feeds/istoreos_ipk/patch/OpenWrt/banner package/base-files/files/etc/
+cp -af feeds/istoreos_ipk/patch/istoreos-24.10/banner package/base-files/files/etc/
 
 ##加入作者信息
 sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By JayKwok'/g" package/base-files/files/etc/openwrt_release
@@ -38,7 +38,7 @@ sed -i 's/root:::0:99999:7:::/root:$1$5mjCdAB1$Uk1sNbwoqfHxUmzRIeuZK1:0:0:99999:
 sed -i 's/services/system/g' feeds/luci/applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json
 
 # iStoreOS-settings
-git clone --depth=1 -b openwrt-24.10 https://github.com/Jaykwok2999/default-settings package/default-settings
+git clone --depth=1 -b main https://github.com/Jaykwok2999/istoreos-settings package/default-settings
 
 ##取消bootstrap为默认主题
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
@@ -55,17 +55,10 @@ sed -i 's/services/nas/g' feeds/luci/applications/luci-app-ksmbd/root/usr/share/
 # minidlna调至NAS
 sed -i 's/services/nas/g' feeds/luci/applications/luci-app-minidlna/root/usr/share/luci/menu.d/luci-app-minidlna.json
 
-# linkease调至NAS
-# rm -rf feeds/linkease_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
-# cp -af feeds/istoreos_ipk/patch/diy/index.js feeds/linkease_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
-# sed -i 's/services/nas/g' feeds/linkease_luci/luci/luci-app-linkease/luasrc/controller/linkease.lua
-# sed -i 's/services/nas/g' feeds/linkease_luci/luci/luci-app-linkease/luasrc/view/linkease_status.htm
-
-
 # Alist调至NAS
-sed -i 's/services/nas/g' feeds/luci/applications/luci-app-alist/root/usr/share/luci/menu.d/luci-app-alist.json
-sed -i 's/msgstr "AList"/msgstr "AList文件列表"/g' feeds/luci/applications/luci-app-alist/po/zh_Hans/alist.po
-sed -i 's/msgstr "AList"/msgstr "AList文件列表"/g' feeds/luci/applications/luci-app-alist/po/zh_Hant/alist.po
+#sed -i 's/services/nas/g' feeds/luci/applications/luci-app-alist/root/usr/share/luci/menu.d/luci-app-alist.json
+#sed -i 's/msgstr "AList"/msgstr "AList文件列表"/g' feeds/luci/applications/luci-app-alist/po/zh_Hans/alist.po
+#sed -i 's/msgstr "AList"/msgstr "AList文件列表"/g' feeds/luci/applications/luci-app-alist/po/zh_Hant/alist.po
 
 # HD磁盘工具调至NAS
 sed -i 's/services/nas/g' feeds/luci/applications/luci-app-hd-idle/root/usr/share/luci/menu.d/luci-app-hd-idle.json
@@ -74,22 +67,36 @@ sed -i 's/services/nas/g' feeds/luci/applications/luci-app-hd-idle/root/usr/shar
 sed -i 's/msgstr "FileBrowser"/msgstr "文件浏览器"/g' feeds/istoreos_ipk/op-fileBrowser/luci-app-filebrowser/po/zh_Hans/filebrowser.po
 sed -i 's/services/nas/g' feeds/istoreos_ipk/op-fileBrowser/luci-app-filebrowser/root/usr/share/luci/menu.d/luci-app-filebrowser.json
 
+# 修改socat
+sed -i 's/msgid "Socat"/msgid "端口转发"/g' feeds/third_party/luci-app-socat/po/zh-cn/socat.po
+sed -i 's/msgstr "Socat"/msgstr "端口转发"/g' feeds/third_party/luci-app-socat/po/zh-cn/socat.po
+
 # 移除要替换的包
-rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,v2ray-geoip,microsocks,adguardhome,socat,miniupnpd}
+rm -rf feeds/packages/net/{adguardhome,miniupnpd}
+# 移除 openwrt feeds 自带的核心库
+rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
+# 移除 openwrt feeds 过时的luci版本
+rm -rf feeds/luci/applications/luci-app-passwall
+rm -rf feeds/istoreos_ipk/caddy
+rm -rf feeds/istoreos_ipk/luci-app-caddy
 # rm -rf feeds/packages/net/alist feeds/luci/applications/luci-app-alist
 rm -rf feeds/luci/applications/luci-app-upnp
+# rm -rf feeds/luci/applications/smartdns
 rm -rf feeds/packages/utils/v2dat
 rm -rf feeds/third_party/luci-app-LingTiGameAcc
-rm -rf feeds/third_party/luci-app-socat
+# rm -rf feeds/third_party/luci-app-socat
 rm -rf feeds/istoreos_ipk/op-daed
 rm -rf feeds/istoreos_ipk/patch/istoreos-files
 rm -rf feeds/istoreos_ipk/vlmcsd
 rm -rf feeds/istoreos_ipk/patch/wall-luci/luci-app-vlmcsd
 rm -rf package/diy/luci-app-ota
-# rm -rf feeds/istoreos_ipk/linkease
+rm -rf feeds/istoreos_ipk/tailscale
+
+rm -rf include/kernel-6.6
+cp -af feeds/istoreos_ipk/patch/istoreos-24.10/kernel-6.6 include/
 
 
-# openwrt-theme
+# istoreos-theme
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/luci/applications/luci-app-argon-config
 rm -rf feeds/third/luci-theme-argon
@@ -134,38 +141,41 @@ function merge_package() {
 }
 
 
-git_sparse_clone main https://github.com/Jaykwok2999/socat luci-app-socat
-git_sparse_clone main https://github.com/Jaykwok2999/socat socat
-git_sparse_clone main https://github.com/Jaykwok2999/openwrt-theme luci-app-argon-config
-git_sparse_clone main https://github.com/Jaykwok2999/openwrt-theme luci-theme-argon
-git_sparse_clone main https://github.com/Jaykwok2999/openwrt_ota luci-app-ota
-git_sparse_clone main https://github.com/Jaykwok2999/openwrt_ota fw_download_tool
+git_sparse_clone main https://github.com/Jaykwok2999/istoreos-theme luci-app-argon-config
+git_sparse_clone main https://github.com/Jaykwok2999/istoreos-ota luci-app-ota
+git_sparse_clone main https://github.com/zijieKwok/github-ota fw_download_tool
 git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-dockerman
 git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-upnp
 git_sparse_clone main https://github.com/kiddin9/kwrt-packages miniupnpd
 git_sparse_clone dev https://github.com/vernesong/OpenClash luci-app-openclash
-git clone https://github.com/Jaykwok2999/passwall-packages.git package/passwall_packages
+#git clone https://github.com/Jaykwok2999/passwall-packages.git package/passwall_packages
+# git clone https://github.com/pymumu/luci-app-smartdns.git luci-app-smartdns
+# git clone https://github.com/pymumu/openwrt-smartdns.git smartdns
+
 
 # SSRP & Passwall
 git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-passwall
 cp -af feeds/istoreos_ipk/patch/un.svg package/luci-app-passwall/root/www/luci-static/passwall/flags/
 
-# golong1.24.x依赖
+# samba4
+#rm -rf feeds/packages/libs/liburing
+#git clone https://github.com/sbwml/feeds_packages_libs_liburing feeds/packages/libs/liburing
+rm -rf feeds/packages/net/samba4
+git clone https://github.com/sbwml/feeds_packages_net_samba4 feeds/packages/net/samba4
+
+# golong26.x依赖
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
 
 rm -rf package/feeds/packages/rust
 git_sparse_clone openwrt-24.10 https://github.com/immortalwrt/packages lang/rust
-
-#rm -rf package/feeds/packages/node
-#git_sparse_clone openwrt-24.10 https://github.com/immortalwrt/packages lang/node
 
 # upnp调至NAS
 sed -i 's/services/nas/g' package/luci-app-upnp/root/usr/share/luci/menu.d/luci-app-upnp.json
 
 # unzip
-rm -rf feeds/packages/utils/unzip
-git clone https://github.com/sbwml/feeds_packages_utils_unzip feeds/packages/utils/unzip
+# rm -rf feeds/packages/utils/unzip
+# git clone https://github.com/sbwml/feeds_packages_utils_unzip feeds/packages/utils/unzip
 
 # frpc名称
 sed -i 's,发送,Transmission,g' feeds/luci/applications/luci-app-transmission/po/zh_Hans/transmission.po
@@ -177,13 +187,9 @@ sed -i 's,frp 客户端,frpc 客户端,g' feeds/luci/applications/luci-app-frpc/
 #sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 
 # 必要的补丁
-pushd feeds/luci
-   curl -s https://raw.githubusercontent.com/Jaykwok2999/istoreos-actions/refs/heads/main/Firewall/0001-luci-mod-status-firewall-disable-legacy-firewall-rul.patch | patch -p1
-popd
-
-pushd
-   curl -sSL https://raw.githubusercontent.com/Jaykwok2999/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
-popd
+#pushd feeds/luci
+#  curl -sSL https://raw.githubusercontent.com/Jaykwok2999/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
+#popd
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
