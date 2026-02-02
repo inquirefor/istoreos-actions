@@ -90,11 +90,11 @@ jobs:
     - name: 安装feeds
       run: |
         cd $OPENWRT_PATH
-        sed -i "1isrc-git diskman https://github.com/jjm2473/luci-app-diskman.git;master\n" feeds.conf.default
+        sed -i "1isrc-git theme https://github.com/Jaykwok2999/openwrt-theme.git;main\n" feeds.conf.default
         sed -i "2isrc-git third_party https://github.com/linkease/istore-packages.git;main\n" feeds.conf.default
         sed -i "3isrc-git jjm2473_apps https://github.com/jjm2473/openwrt-apps.git;main\n" feeds.conf.default        
         sed -i "4isrc-git istoreos_ipk https://github.com/Jaykwok2999/istoreos-ipk.git;main\n" feeds.conf.default        
-        sed -i "5isrc-git theme_linkease https://github.com/Jaykwok2999/istoreos_linkease.git;main\n" feeds.conf.default        
+        sed -i "5isrc-git linkease https://github.com/Jaykwok2999/linkease.git;main\n" feeds.conf.default        
         sed -i "6isrc-git passwall https://github.com/Jaykwok2999/luci-app-passwall.git;main\n" feeds.conf.default        
         sed -i "7isrc-git passwall_packages https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git;main\n" feeds.conf.default        
         ./scripts/feeds update -a
