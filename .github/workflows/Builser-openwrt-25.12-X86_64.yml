@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/openwrt/openwrt.git
+  REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: openwrt-25.12
   CONFIG_FILE: configs/x86_64_OpenWrt.config
   DIY_SCRIPT: diy/diy-istoreos.sh
