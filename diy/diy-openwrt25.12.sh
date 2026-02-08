@@ -191,8 +191,6 @@ git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-passwall
 cp -af feeds/istoreos_ipk/patch/un.svg package/luci-app-passwall/root/www/luci-static/passwall/flags/
 
 # samba4
-#rm -rf feeds/packages/libs/liburing
-#git clone https://github.com/sbwml/feeds_packages_libs_liburing feeds/packages/libs/liburing
 rm -rf feeds/packages/net/samba4
 git clone https://github.com/sbwml/feeds_packages_net_samba4 feeds/packages/net/samba4
 
@@ -206,18 +204,10 @@ git clone https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/l
 # upnp调至NAS
 sed -i 's/services/nas/g' package/luci-app-upnp/root/usr/share/luci/menu.d/luci-app-upnp.json
 
-# unzip
-# rm -rf feeds/packages/utils/unzip
-# git clone https://github.com/sbwml/feeds_packages_utils_unzip feeds/packages/utils/unzip
-
 # frpc名称
 sed -i 's,发送,Transmission,g' feeds/luci/applications/luci-app-transmission/po/zh_Hans/transmission.po
 sed -i 's,frp 服务器,frps 服务器,g' feeds/luci/applications/luci-app-frps/po/zh_Hans/frps.po
 sed -i 's,frp 客户端,frpc 客户端,g' feeds/luci/applications/luci-app-frpc/po/zh_Hans/frpc.po
-
-# tailscale
-#rm -rf feeds/packages/net/tailscale
-#sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 
 # 必要的补丁
 #pushd feeds/luci
