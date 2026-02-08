@@ -8,7 +8,7 @@ env:
   REPO_URL: https://github.com/openwrt/openwrt.git
   REPO_BRANCH: openwrt-25.12
   CONFIG_FILE: configs/x86_64_OpenWrt.config
-  DIY_SCRIPT: diy/diy-istoreos.sh
+  DIY_SCRIPT: diy/diy-openwrt25.12.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
