@@ -1,37 +1,5 @@
 #!/bin/bash
 
-PKG_PATH="$GITHUB_WORKSPACE/openwrt/package/"
-
-#修复TailScale配置文件冲突
-TS_FILE=$(find ../feeds/packages/ -maxdepth 3 -type f -wholename "*/tailscale/Makefile")
-if [ -f "$TS_FILE" ]; then
-	echo " "
-
-	sed -i '/\/files/d' $TS_FILE
-
-	cd $PKG_PATH && echo "tailscale has been fixed!"
-fi
-
-#修复Rust编译失败
-RUST_FILE=$(find ../feeds/packages/ -maxdepth 3 -type f -wholename "*/rust/Makefile")
-if [ -f "$RUST_FILE" ]; then
-	echo " "
-
-	sed -i 's/ci-llvm=true/ci-llvm=false/g' $RUST_FILE
-
-	cd $PKG_PATH && echo "rust has been fixed!"
-fi
-
-#修复DiskMan编译失败
-DM_FILE="./luci-app-diskman/applications/luci-app-diskman/Makefile"
-if [ -f "$DM_FILE" ]; then
-	echo " "
-
-	sed -i '/ntfs-3g-utils /d' $DM_FILE
-
-	cd $PKG_PATH && echo "diskman has been fixed!"
-fi
-
 mkdir -p files/etc/config
 #wget -qO- https://raw.githubusercontent.com/Jaykwok2999/istoreos-ipk/refs/heads/main/patch/diy/openclash > files/etc/config/openclash
 #wget -qO- https://raw.githubusercontent.com/Jaykwok2999/istoreos-ipk/refs/heads/main/patch/diy/proxy/openclash > files/etc/config/openclash
@@ -200,8 +168,8 @@ git clone https://github.com/sbwml/feeds_packages_net_samba4 feeds/packages/net/
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
 
-# rm -rf package/feeds/packages/rust
-# git_sparse_clone openwrt-24.10 https://github.com/immortalwrt/packages lang/rust
+rm -rf package/feeds/packages/rust
+git_sparse_clone openwrt-24.10 https://github.com/immortalwrt/packages lang/rust
 
 # upnp调至NAS
 sed -i 's/services/nas/g' package/luci-app-upnp/root/usr/share/luci/menu.d/luci-app-upnp.json
