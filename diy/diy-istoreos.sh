@@ -94,6 +94,7 @@ rm -rf package/diy/luci-app-ota
 rm -rf feeds/istoreos_ipk/tailscale
 rm -rf feeds/luci/applications/luci-app-dockerman
 rm -rf feeds/luci/applications/luci-app-docker
+rm -rf feeds/istoreos_ipk/luci-lib-docker
 
 # istoreos-theme
 rm -rf feeds/luci/themes/luci-theme-argon
