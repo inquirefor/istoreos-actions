@@ -145,18 +145,18 @@ function merge_package() {
 git_sparse_clone main https://github.com/Jaykwok2999/istoreos-theme luci-app-argon-config
 git_sparse_clone main https://github.com/Jaykwok2999/istoreos-ota luci-app-ota
 git_sparse_clone main https://github.com/zijieKwok/github-ota fw_download_tool
-git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-dockerman
-git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-docker
-git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-upnp
-git_sparse_clone main https://github.com/kiddin9/kwrt-packages miniupnpd
+git_sparse_clone main https://github.com/kiddin9/op-packages luci-app-dockerman
+git_sparse_clone main https://github.com/kiddin9/op-packages luci-app-docker
+git_sparse_clone main https://github.com/kiddin9/op-packages luci-app-upnp
+git_sparse_clone main https://github.com/kiddin9/op-packages miniupnpd
 git_sparse_clone dev https://github.com/vernesong/OpenClash luci-app-openclash
-#git clone https://github.com/Jaykwok2999/passwall-packages.git package/passwall_packages
+# git clone https://github.com/Jaykwok2999/passwall-packages.git package/passwall_packages
 # git clone https://github.com/pymumu/luci-app-smartdns.git luci-app-smartdns
 # git clone https://github.com/pymumu/openwrt-smartdns.git smartdns
 
 
 # SSRP & Passwall
-git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-passwall
+git_sparse_clone main https://github.com/kiddin9/op-packages luci-app-passwall
 cp -af feeds/istoreos_ipk/patch/un.svg package/luci-app-passwall/root/www/luci-static/passwall/flags/
 
 # samba4
