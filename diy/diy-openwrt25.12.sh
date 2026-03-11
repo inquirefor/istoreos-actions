@@ -186,10 +186,6 @@ git_sparse_clone dev https://github.com/vernesong/OpenClash luci-app-openclash
 # git clone https://github.com/pymumu/openwrt-smartdns.git smartdns
 
 
-# SSRP & Passwall
-git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-passwall
-cp -af feeds/istoreos_ipk/patch/un.svg package/luci-app-passwall/root/www/luci-static/passwall/flags/
-
 # samba4
 rm -rf feeds/packages/net/samba4
 git clone https://github.com/sbwml/feeds_packages_net_samba4 feeds/packages/net/samba4
