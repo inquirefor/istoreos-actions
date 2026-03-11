@@ -71,7 +71,7 @@ sed -i 's/root:::0:99999:7:::/root:$1$5mjCdAB1$Uk1sNbwoqfHxUmzRIeuZK1:0:0:99999:
 sed -i 's/services/system/g' feeds/luci/applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json
 
 # iStoreOS-settings
-git clone --depth=1 -b main https://github.com/Jaykwok2999/istoreos-settings package/default-settings
+# git clone --depth=1 -b main https://github.com/Jaykwok2999/istoreos-settings package/default-settings
 
 ##取消bootstrap为默认主题
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
