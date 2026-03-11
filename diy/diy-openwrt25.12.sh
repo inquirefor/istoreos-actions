@@ -176,10 +176,10 @@ function merge_package() {
 git_sparse_clone main https://github.com/Jaykwok2999/istoreos-theme luci-app-argon-config
 git_sparse_clone main https://github.com/Jaykwok2999/istoreos-ota luci-app-ota
 git_sparse_clone main https://github.com/zijieKwok/github-ota fw_download_tool
-# git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-dockerman
-# git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-docker
-git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-upnp
-git_sparse_clone main https://github.com/kiddin9/kwrt-packages miniupnpd
+# git_sparse_clone main https://github.com/kiddin9/op-packages luci-app-dockerman
+# git_sparse_clone main https://github.com/kiddin9/op-packages luci-app-docker
+git_sparse_clone main https://github.com/kiddin9/op-packages luci-app-upnp
+git_sparse_clone main https://github.com/kiddin9/op-packages miniupnpd
 git_sparse_clone dev https://github.com/vernesong/OpenClash luci-app-openclash
 # git clone https://github.com/Jaykwok2999/passwall-packages.git package/passwall_packages
 # git clone https://github.com/pymumu/luci-app-smartdns.git luci-app-smartdns
