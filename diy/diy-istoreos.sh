@@ -92,9 +92,9 @@ rm -rf feeds/istoreos_ipk/vlmcsd
 rm -rf feeds/istoreos_ipk/patch/wall-luci/luci-app-vlmcsd
 rm -rf package/diy/luci-app-ota
 rm -rf feeds/istoreos_ipk/tailscale
-#rm -rf feeds/luci/applications/luci-app-dockerman
-#rm -rf feeds/luci/applications/luci-app-docker
-#rm -rf feeds/istoreos_ipk/luci-lib-docker
+# rm -rf feeds/luci/applications/luci-app-dockerman
+# rm -rf feeds/luci/applications/luci-app-docker
+rm -rf feeds/istoreos_ipk/luci-lib-docker
 
 # istoreos-theme
 rm -rf feeds/luci/themes/luci-theme-argon
@@ -145,8 +145,8 @@ function merge_package() {
 git_sparse_clone main https://github.com/Jaykwok2999/istoreos-theme luci-app-argon-config
 git_sparse_clone main https://github.com/Jaykwok2999/istoreos-ota luci-app-ota
 git_sparse_clone main https://github.com/zijieKwok/github-ota fw_download_tool
-#git_sparse_clone main https://github.com/kiddin9/op-packages luci-app-dockerman
-#git_sparse_clone main https://github.com/kiddin9/op-packages luci-app-docker
+# git_sparse_clone main https://github.com/kiddin9/op-packages luci-app-dockerman
+# git_sparse_clone main https://github.com/kiddin9/op-packages luci-app-docker
 git_sparse_clone main https://github.com/kiddin9/op-packages luci-app-upnp
 git_sparse_clone main https://github.com/kiddin9/op-packages miniupnpd
 git_sparse_clone dev https://github.com/vernesong/OpenClash luci-app-openclash
@@ -189,9 +189,9 @@ sed -i 's,frp 客户端,frpc 客户端,g' feeds/luci/applications/luci-app-frpc/
 #sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 
 # 必要的补丁
-#pushd feeds/luci
+# pushd feeds/luci
 #  curl -sSL https://raw.githubusercontent.com/Jaykwok2999/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
-#popd
+# popd
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
