@@ -140,8 +140,8 @@ jobs:
     - name: 整理文件
       if: steps.compile.outputs.status == 'success'
       run: |
-        cd $OPENWRT_PATH/bin/targets/mediatek/filogic
-        mv immortalwrt-*-beeconmini_seed-ac5-*.bin istoreos-24.10.8-$(date +"%Y%m%d%H")-*-beeconmini_seed-ac5-*.bin
+        cd $OPENWRT_PATH/bin/targets/*/*
+        mv istoreos-*-beeconmini_seed-ac5-*.bin istoreos-beeconmini_seed-ac5-6.6-$(date +"%Y%m%d").bin
         cat sha256sums
         cp $OPENWRT_PATH/.config build.config
         mv -f $OPENWRT_PATH/bin/packages/*/*/*.ipk packages
