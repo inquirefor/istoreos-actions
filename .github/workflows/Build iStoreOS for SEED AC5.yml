@@ -8,7 +8,7 @@ env:
   REPO_URL: https://github.com/istoreos/istoreos.git
   REPO_BRANCH: istoreos-24.10
   CONFIG_FILE: configs/mediatek_filogic.config
-  DIY_SCRIPT: diy/diy-istoreos.sh
+  DIY_SCRIPT: diy/diy-seed_ac5.sh
   TARGET: mediatek/filogic
   DEVICE: beeconmini_seed-ac5
   CLASH_KERNEL: amd64
