@@ -28,6 +28,8 @@ cp -af feeds/istoreos_ipk/patch/istoreos-24.10/banner package/base-files/files/e
 ##加入作者信息
 sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By JayKwok'/g" package/base-files/files/etc/openwrt_release
 
+sed -i "s/ImmortalWrt/iStoreOS/g" include/version.mk
+
 # 修改默认IP
 sed -i 's/192.168.100.1/192.168.2.1/g' package/istoreos-files/Makefile
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
