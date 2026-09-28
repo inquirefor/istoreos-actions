@@ -5,10 +5,11 @@ on:
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/istoreos/istoreos.git
-  REPO_BRANCH: istoreos-24.10
+  REPO_URL: https://github.com/BeeconMini/immortalwrt.git
+  REPO_BRANCH: 25.12.0-rc2
   CONFIG_FILE: configs/mediatek_filogic.config
-  DIY_SCRIPT: diy/diy-istoreos.sh
+  DIY_SCRIPT: diy/diy-seed_ac5.sh
+  TARGET: mediatek/filogic
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
