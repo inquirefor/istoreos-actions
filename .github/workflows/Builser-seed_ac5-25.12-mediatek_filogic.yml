@@ -1,4 +1,4 @@
-name: Builser-istoreos-24.10.8-mediatek_filogic
+name: Builser-seed_ac5-25.12-mediatek_filogic
 
 on:
   repository_dispatch:
